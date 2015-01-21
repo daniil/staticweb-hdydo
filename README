@@ -5,7 +5,7 @@ Go to divshot.com and signup (use Github for a quick signup)
 You will need NodeJS installed to work with Divshot CLI.
 
 Install Divshot CLI by running 
-  node install -g divshot-cli
+  npm install -g divshot-cli
 Make sure to run your console as administrator
 
 Login into Divshot by running
