@@ -1,0 +1,22 @@
+{
+  "name": "daniil-hdydo",
+  "version": "0.0.0",
+  "authors": [
+    "Daniil Molodkov <yanko86@gmail.com>"
+  ],
+  "description": "Hello World of static web apps",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "firebase": "~2.0.6",
+    "jquery": "~2.1.3",
+    "semantic": "~1.4.1",
+    "idle.js": "~1.0.0"
+  }
+}

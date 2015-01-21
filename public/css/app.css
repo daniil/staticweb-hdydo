@@ -1,0 +1,51 @@
+.container {
+  width: 96%;
+  margin: 0 auto;
+}
+
+.auth-container {
+  margin-bottom: 1.5rem;
+}
+
+.chat-container {
+  margin-top: 1.5rem;
+}
+
+.users-container {
+  margin-top: 1.5rem;
+}
+
+.input-aligned {
+  margin-top: 0.5rem;
+}
+
+.drawing-canvas {
+  display: block;
+}
+
+.ui.label.canvas-label-current-color {
+  background-color: #000;
+}
+
+.username {
+  margin-right: 1rem;
+}
+
+#videos {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  margin: 0 auto;
+}
+
+#self-video {
+  position: absolute;
+  width: 200px;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+#caller-video {
+  width: 640px;
+}

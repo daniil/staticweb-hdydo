@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>HDYDO?</title>
+  <link rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/semantic/dist/semantic.min.js"></script>
+  <script src="bower_components/idle.js/build/idle.min.js"></script>
+  <script src="https://arcane-cove-6754.herokuapp.com/socket.io/socket.io.js"></script>
+  <script src="https://arcane-cove-6754.herokuapp.com/easyrtc/easyrtc.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>How Do You Do? Messenger</h1>
+    <div id="auth-container" class="auth-container">
+      <div class="ui attached warning message">
+        <div class="header">
+          You must login to be able to post chat messages and draw on whiteboard.
+        </div>
+        <p>
+          To register account, make sure the "New User" toggle is on.
+        </p>
+      </div>
+      <form class="ui form attached fluid segment">
+        <div class="four fields">
+          <div class="field">
+            <input id="auth-email" type="text" placeholder="Email">
+          </div>
+          <div class="field">
+            <input id="auth-password" type="password" placeholder="Password">
+          </div>
+          <div class="field">
+            <div class="ui toggle checkbox input-aligned">
+              <input id="auth-new-user" type="checkbox">
+              <label>New User</label>
+            </div>
+          </div>
+          <div class="field">
+            <div id="btn-auth-submit" class="ui blue button">Submit</div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="chat-controls" class="ui form">
+      <div class="fields">
+        <div class="four wide field">
+          <label>Author</label>
+          <div id="author-label" class="ui image big label">
+            <span class="author-label-email"></span>
+            <a id="author-logout" class="detail">Logout</a>
+          </div>
+          <input id="author" type="hidden" name="author">
+        </div>
+        <div class="twelve wide field">
+          <label>Message</label>
+          <div class="ui fluid action input">
+            <input id="message" type="text" name="message" placeholder="Message">
+            <div id="btn-message-send" class="ui blue button">Send</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui grid">
+      <div class="row">
+        <div class="three wide column">
+          <div class="ui segment">
+            <div class="ui ribbon label">Users Online</div>
+            <div id="users-container" class="users-container"></div>
+          </div>
+        </div>
+        <div class="eight wide column">
+          <div class="ui segment">
+            <div class="ui ribbon label">Chat</div>
+            <div id="chat-container" class="chat-container"></div>
+          </div>
+        </div>
+        <div class="five wide column">
+          <div class="ui segment">
+            <div class="ui ribbon label">Whiteboard</div>
+            <div id="canvas-label-colors" class="ui bottom left attached big label">
+              <div class="ui black empty circular label"></div>
+              <div class="ui yellow empty circular label"></div>
+              <div class="ui green empty circular label"></div>
+              <div class="ui blue empty circular label"></div>
+              <div class="ui orange empty circular label"></div>
+              <div class="ui purple empty circular label"></div>
+              <div class="ui red empty circular label"></div>
+              <div class="ui teal empty circular label"></div>
+              <div id="canvas-label-current-color" class="floating ui circular mini label canvas-label-current-color"></div>
+            </div>
+            <div id="canvas-label-clear" class="ui bottom right attached big red label">
+              <a id="btn-canvas-clear">Clear</a>
+            </div>
+            <canvas id="drawing-canvas" class="drawing-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="video-chat-modal" class="ui modal video-chat-modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Video chat
+    </div>
+    <div class="content">
+      <div class="description">
+        <div id="videos"> 
+          <video autoplay="autoplay" id="self-video" muted="muted" volume="0" ></video>
+          <video autoplay="autoplay" id="caller-video"></video>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui negative right labeled icon button">
+        Hang up
+        <i class="call square icon"></i>
+      </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

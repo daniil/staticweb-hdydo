@@ -1,0 +1,6 @@
+{
+  "name": "daniil-hdydo",
+  "root": "public",
+  "clean_urls": true,
+  "error_page": "error.html"
+}
