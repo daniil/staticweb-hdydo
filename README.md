@@ -27,17 +27,16 @@ divshot push
 
 Create a folder on your computer with namespace and app name, such as daniil-hdydo
 
-cd into folder and run
+`cd` into folder and run `divshot init`
 
 ```
-divshot init
-
-Name: leave blank
-Root: public (to ensure we have a way to store sensitive information in the level above) 
-Clean URLs: y
-Error Pages: leave blank
-Divshot.io app: n
+$ Name: leave blank
+$ Root: public (to ensure we have a way to store sensitive information in the level above) 
+$ Clean URLs: y
+$ Error Pages: leave blank
+$ Divshot.io app: n
 ```
+
 
 Go to firebase.com and signup, the initial app will be created for you automatically.
 
@@ -59,7 +58,7 @@ Since we're using public folder for our public content, you will need to create 
 {
   "directory" : "public/bower_components"
 }
-``
+```
 
 Let's install Firebase client by running
 
@@ -163,7 +162,7 @@ fbDataRef.set('Author ' + author + ' says ' + message);
 fbDataRef.set({author: author, message: message});
 ```
 
-In order to display our chat messages we need to add an event notifying us when new chat messages arrive. It takes an event type and callback function as it's arguments. For each message in Firebase, it will call our callback with a snapshot containing data, which we can extract using val() function:
+In order to display our chat messages we need to add an event notifying us when new chat messages arrive. It takes an event type and callback function as it's arguments. For each message in Firebase, it will call our callback with a snapshot containing data, which we can extract using `val()` function:
 
 ```
 fbDataRef.on('child_added', function(snapshot) {
@@ -191,11 +190,11 @@ Test your app by going to URL Divshot CLI gives you after deployment, for me it'
 
 Before we add more messaging functionality to our app, let's make sure that we have user authentication, so you don't have to enter your author name every time you refresh the page.
 
-In Firebase Dashboard go to 'Login & Auth' tab and enable 'Email & Password' Authentication. After that first thing we'll do in our app is check whether user is authorized when he opens our app:
+In Firebase Dashboard go to _Login & Auth_ tab and enable _Email & Password_ Authentication. After that first thing we'll do in our app is check whether user is authorized when he opens our app:
 
 `var authData = fbDataRef.getAuth();`
 
-Since we haven't added any login or registration code just yet, this should return 'null'. We'll use that to give user a way to register or login. Add id="chat-controls" to your Author and Message ui.form so we can access it via jQuery. Add a login/register container above it:
+Since we haven't added any login or registration code just yet, this should return `null`. We'll use that to give user a way to register or login. Add `id="chat-controls"`` to your Author and Message ui.form so we can access it via jQuery. Add a login/register container above it:
 
 ```
 <div id="auth-container" class="auth-container">
@@ -422,7 +421,7 @@ function clearPixel(snapshot) {
 };
 ```
 
-We also can not allow unauthorized users to clear the whiteboard, so since we're adding yet another UI manipulation, it's a good time to refactor it into a separate function and call it within our fbDataRef.onAuth callback (make sure to also refactor it everywhere in initial getAuth()):
+We also can not allow unauthorized users to clear the whiteboard, so since we're adding yet another UI manipulation, it's a good time to refactor it into a separate function and call it within our fbDataRef.onAuth callback (make sure to also refactor it everywhere in initial `getAuth()`):
 
 ```
 function updateUI(authPayload) {
@@ -548,7 +547,7 @@ fbDataRef.child('connectedUsers').on('child_removed', function(snapshot) {
 
 We will use idle.js library to add user connection status information, install it by running `bower install idle.js --save` and make sure to add it to your index.html in your </head> section.
 
-Then we'll use idle.js for checking user status and 'child_changed' Firebase event for updating the appropriate user:
+Then we'll use idle.js for checking user status and `child_changed` Firebase event for updating the appropriate user:
 
 ```
 fbDataRef.child('connectedUsers').on('child_changed', function(snapshot) {
@@ -605,7 +604,7 @@ Let's test out this new functionality on Divshot:
 
 `divshot push`
 
-Next we will add a video chat functionality. We will be using easyRTC for our WebRTC toolkit. For the purpose of this demo, using the pre-existing instance should be sufficient but in case you want to have your own instance of easyRTC running you will need to deploy it to Heroku for server-side components. First create a Heroku account, clone 'https://github.com/mohitathwani/herokuRTC' into a folder and run
+Next we will add a video chat functionality. We will be using easyRTC for our WebRTC toolkit. For the purpose of this demo, using the pre-existing instance should be sufficient but in case you want to have your own instance of easyRTC running you will need to deploy it to Heroku for server-side components. First create a Heroku account, clone https://github.com/mohitathwani/herokuRTC into a folder and run
 
 ```
 heroku login
@@ -710,7 +709,7 @@ fbDataRef.child('connectedUsers').on('child_changed', function(snapshot) {
 });
 ```
 
-Next we will add an event for making a call when the call button is clicked using easyRTC.call() method. We open up our modal dialog, make sure that our mirror video is playing and send the call request to the easyRTC id:
+Next we will add an event for making a call when the call button is clicked using `easyRTC.call()`` method. We open up our modal dialog, make sure that our mirror video is playing and send the call request to the easyRTC id:
 
 ```
 $('body').on('click', '.call-button', function(e) {
